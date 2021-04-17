@@ -144,7 +144,7 @@ public class TicTacToe
 		winning.add(diagonal1);
 		winning.add(diagonal1);
 		
-		for(List l : winning) //for each list insdie the winning list
+		for(List l : winning) //for each list inside the winning list
 		{
 			//if the ArrayList of Player has all of the elements of any one l i.e. list(sequence) of winning in it
 			if(playerPositions.containsAll(l))			
