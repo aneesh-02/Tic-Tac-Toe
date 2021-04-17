@@ -27,7 +27,6 @@ public class TicTacToe
 		{
 			System.out.println("Enter the cell for your placement (1-9): ");
 			int playerPos = sc.nextInt(); // user input for placement
-			System.out.println(playerPos);
 			// in case the player position entered is already taken by player or cpu
 						while(playerPositions.contains(playerPos) || cpuPositions.contains(playerPos))
 						{
@@ -37,23 +36,28 @@ public class TicTacToe
 			
 			placement(board,playerPos,"player"); // user's turn fulfilled  
 			String result = checkWinner(); // check if there is a winner after user's turns
+			if(result.length()>0) //in case check winner returns empty string
+			{
+				System.out.println(result);
+				break; // break the while loop of entering positions
+			}
+			
 			
 			Random r = new Random();  	// cpu input for placement
 			int cpuPos = r.nextInt(9)+1;
 			// in case the cpu position generated is already taken by player or cpu
 						while(playerPositions.contains(cpuPos) || cpuPositions.contains(cpuPos))
 						{
-							 cpuPos = r.nextInt(9); // cpu input for placement
+							 cpuPos = r.nextInt(9)+1; // cpu input for placement
 						}
 							
 			placement(board,cpuPos,"cpu");  // pc's turn fulfilled							
 			print(board); // print game
 			result = checkWinner(); // check if there is a winner after cpu turns
-			
-			if(result.length()>0)
+			if(result.length()>0) //in case check winner returns empty string
 			{
 				System.out.println(result);
-				break;
+				break; // break the while loop of entering positions
 			}
 		}
 	}
@@ -128,7 +132,7 @@ public class TicTacToe
 		List midCol = Arrays.asList(2,5,8);
 		List leftCol = Arrays.asList(3,6,9);
 		List diagonal1 = Arrays.asList(1,5,9);
-		List diagonal2 = Arrays.asList(3,5,7);
+		List diagonal2 = Arrays.asList(7,5,3);
 		
 		List<List> winning = new ArrayList<List>(); // a new list of lists
 		winning.add(topRow); // adding all the winning position lists to this new list
